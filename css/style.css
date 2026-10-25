@@ -1,0 +1,118 @@
+/* =========================
+   GENEL AYARLAR
+========================= */
+
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+/* =========================
+   HERO ALANI
+========================= */
+
+.hero {
+    height: 70vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.6),
+        rgba(0,0,0,0.6)),
+        url('https://picsum.photos/1600/900');
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================
+   CARD TASARIMI
+========================= */
+
+.card {
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   BUTONLAR
+========================= */
+
+.btn-dark {
+    border-radius: 8px;
+}
+
+.btn-warning {
+    border-radius: 8px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    padding: 12px 0;
+}
+
+/* =========================
+   İLAN LİSTESİ
+========================= */
+
+#ilanListesi .card {
+    height: 100%;
+}
+
+/* =========================
+   PROFİL SAYFASI
+========================= */
+
+#profilIlanlar .card {
+    height: 100%;
+}
+
+/* =========================
+   MESAJLAŞMA (CHAT)
+========================= */
+
+#mesajListesi {
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+/* mesaj balonları daha modern */
+#mesajListesi div span {
+    font-size: 14px;
+    max-width: 70%;
+}
+
+/* =========================
+   FORM ALANLARI
+========================= */
+
+input, textarea, select {
+    border-radius: 8px !important;
+}
+
+/* =========================
+   RESPONSIVE DÜZELTME
+========================= */
+
+@media (max-width: 768px) {
+    .hero {
+        height: 50vh;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .card:hover {
+        transform: none;
+    }
+}

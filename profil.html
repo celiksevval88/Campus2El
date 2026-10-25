@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">Kampus2El</a>
+    </div>
+</nav>
+
+<!-- PROFİL BİLGİ -->
+<div class="container my-4">
+
+    <div class="card p-4 shadow">
+
+        <h3>👤 Kullanıcı Profili</h3>
+
+        <p>
+            <strong>E-posta:</strong>
+            <span id="userEmail">-</span>
+        </p>
+
+        <p>
+            <strong>Rol:</strong>
+            <span id="userRole">-</span>
+        </p>
+
+    </div>
+
+</div>
+
+<!-- İLANLAR -->
+<div class="container">
+
+    <h4 class="mb-3">📢 İlanlarım</h4>
+
+    <div class="row" id="profilIlanlar"></div>
+
+</div>
+
+<script src="js/script.js"></script>
+
+<script>
+// =========================
+// PROFİL YÜKLEME
+// =========================
+document.addEventListener("DOMContentLoaded", function () {
+
+    const user = localStorage.getItem("currentUser");
+
+    if (!user) {
+        alert("Önce giriş yap!");
+        window.location.href = "giris.html";
+        return;
+    }
+
+    const rol = localStorage.getItem("rol");
+
+    // kullanıcı bilgisi
+    document.getElementById("userEmail").innerText = user;
+    document.getElementById("userRole").innerText = rol || "user";
+
+    // ilanlar
+    const container = document.getElementById("profilIlanlar");
+
+    let ilanlar = JSON.parse(localStorage.getItem("ilanlar")) || [];
+
+    let benimIlanlarim = ilanlar.filter(i => i.userEmail === user);
+
+    container.innerHTML = "";
+
+    if (benimIlanlarim.length === 0) {
+        container.innerHTML = `
+            <p class="text-muted">Henüz ilan eklemedin.</p>
+        `;
+        return;
+    }
+
+    benimIlanlarim.forEach(ilan => {
+
+        container.innerHTML += `
+            <div class="col-md-4 mb-3">
+
+                <div class="card shadow h-100">
+
+                    <img src="${ilan.resim || 'https://picsum.photos/400/250'}"
+     class="card-img-top">
+
+                    <div class="card-body">
+
+                        <h5>${ilan.baslik}</h5>
+                        <p>${ilan.aciklama}</p>
+
+                        <h4 class="text-primary">${ilan.fiyat} ₺</h4>
+
+                        <button class="btn btn-danger w-100"
+                                onclick="ilanSil(${ilan.id})">
+                            İlanı Sil
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+    });
+
+});
+</script>
+
+</body>
+</html>

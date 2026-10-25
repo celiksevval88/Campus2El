@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İlanlar</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">Kampus2El</a>
+    </div>
+</nav>
+
+<!-- BAŞLIK -->
+<div class="container my-4">
+    <h2 class="text-center">Tüm İlanlar</h2>
+</div>
+
+<!-- 🔍 ARAMA + FİLTRE -->
+<div class="container mb-4">
+
+    <!-- ARAMA -->
+    <input type="text"
+           id="aramaInput"
+           class="form-control mb-3"
+           placeholder="İlan ara...">
+
+    <!-- KATEGORİ -->
+    <select id="kategoriFiltre" class="form-select">
+        <option value="all">Tüm Kategoriler</option>
+        <option value="Elektronik">Elektronik</option>
+        <option value="Ders Notu">Ders Notu</option>
+        <option value="Bisiklet">Bisiklet</option>
+        <option value="Ev Eşyası">Ev Eşyası</option>
+    </select>
+
+</div>
+
+<!-- İLAN LİSTESİ -->
+<div class="container">
+    <div class="row" id="ilanListesi"></div>
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
